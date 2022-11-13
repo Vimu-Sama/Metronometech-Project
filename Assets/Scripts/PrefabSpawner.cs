@@ -18,10 +18,12 @@ public class PrefabSpawner : MonoBehaviour
                 GameObject prefabGameObject = GameObject.Instantiate<GameObject>(prefab);
                 prefabGameObject.transform.position =
                     new Vector3(spawnStartTransformX, spawnStartTransformY, spawnStartTransformZ);
+                ParentManager.Instance.CreateReference(prefabGameObject.GetComponentInChildren<Bulb>(),i,j);
                 spawnStartTransformX += 1f;
             }
             spawnStartTransformX = tempVar;
             spawnStartTransformY -= 1f;
         }
+        ParentManager.Instance.CheckBulbMultiplier();
     }
 }
