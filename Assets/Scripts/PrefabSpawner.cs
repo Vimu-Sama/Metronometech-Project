@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//prefab spawenr script
 public class PrefabSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
@@ -18,12 +18,12 @@ public class PrefabSpawner : MonoBehaviour
                 GameObject prefabGameObject = GameObject.Instantiate<GameObject>(prefab);
                 prefabGameObject.transform.position =
                     new Vector3(spawnStartTransformX, spawnStartTransformY, spawnStartTransformZ);
-                ParentManager.Instance.CreateReference(prefabGameObject.GetComponentInChildren<Bulb>(),i,j);
+                ParentManager.Instance.CreateReference(prefabGameObject.GetComponentInChildren<Bulb>(), i, j); //passing the child object reference to the ParentManager
                 spawnStartTransformX += 1f;
             }
             spawnStartTransformX = tempVar;
             spawnStartTransformY -= 1f;
         }
-        ParentManager.Instance.CheckBulbMultiplier();
+        ParentManager.Instance.CheckBulbMultiplier(); //calling the Final function for arranging the bulbs properly
     }
 }
